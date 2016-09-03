@@ -1,5 +1,5 @@
 //just an attempt, need to install gulp browserify on Saturday to test
-module.exports = allWords;
+module.exports.allWords = allWords;
 
 let allWords = [
   'abduct',
