@@ -12,7 +12,7 @@
  * letter in a certain position
  */
 
-let listOfWords = require('./words');
+let allWords = require('./words');
 
 function currentList(words) {
     console.log('Words left: ' + words.length);
@@ -22,7 +22,7 @@ function currentList(words) {
 window.addEventListener('load', function() {
     // allWords is my best guess as to the syntax that will
     // draw in the array from words.js
-    currentList(listOfWords.allWords);
+    currentList(allWords);
 
     
 });
