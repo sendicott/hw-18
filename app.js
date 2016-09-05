@@ -54,6 +54,12 @@ window.addEventListener('load', function () {
         if (removeWithLetter(letterGuess).length > 0) {
             console.log("Nope! That letter definitely isn't in the word.");
             allWords = removeWithLetter(letterGuess);
+            // trying out appending letters to a guess graveyard here
+            let guessGraveyard = document.querySelector("#guess-graveyard");
+            let graveGraph = document.createElement("p");
+            graveGraph.value = document.querySelector('#guess-box').value;
+            console.log(graveGraph);
+            guessGraveyard.appendChild(graveGraph);
             currentList(allWords);
         } else {
             console.log("Got a letter right");
