@@ -33,24 +33,19 @@ window.addEventListener('load', function () {
     let guessBtn = document.querySelector('#guess-click');
 
     lengthBtn.addEventListener('click', function () {
-        // can I lift this variable up a scope so it can be accessed later?
         let targetLength = parseInt(document.querySelector('#word-length').value);
-        console.log("Length of word must be: " + targetLength + " letters");
         allWords = allWords.filter(function (word) {
             return (word.length === targetLength);
         });
-        // would this be where to put an array of blanks, to be filled
-        // with letters later? Could it be accessed?
         let letterBoxRow = document.querySelector("#letterBoxRow");
-        // let letterArray = [];
         for (let i = 0; i < targetLength; i++) {
-            console.log("loop runs " + i + " times");
             let singleBox = document.createElement("div");
-            singleBox.classList.add("#boxStyling");
+            singleBox.classList.add("boxStyling");
             singleBox.setAttribute("id", 'letterBox' + (i + 1));
             letterBoxRow.appendChild(singleBox);
         }
         currentList(allWords);
+        document.querySelector('#word-length').value = "";
     });
 
     guessBtn.addEventListener('click', function () {
@@ -63,7 +58,7 @@ window.addEventListener('load', function () {
         } else {
             console.log("Got a letter right");
             currentList(allWords);
-
         }
+        document.querySelector('#guess-box').value = "";
     });
 });
