@@ -9,16 +9,30 @@
 <body>
     <h1>Evil Hangman >:(</h1>
     <section id="letterBoxRow">
-    </section>
-    <section id="guess-graveyard">
-    </section>
+    </section>       
+
+    <div class="wrongRow">
+        <h2>Guess Graveyard:</h2>
+        <section id="guess-graveyard">
+        </section>       
+    </div>
+    
+    <div class="wrongRow">
+        <h2>Life Count:</h2>
+        <p id="life-count"></p>    
+    </div>
+
     <section>
         <input type="text" id="word-length" placeholder="1 - 17 letters">
         <button id="length-setter">Set Length</button>
     </section>
+
     <section>
         <input type="text" id="guess-box" placeholder="a-z">
         <button id="guess-click">Pick a Letter</button>
+    </section>
+
+    <section id="results">
     </section>
 </body>
 </html>

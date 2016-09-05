@@ -47,24 +47,40 @@ window.addEventListener('load', function () {
         currentList(allWords);
         document.querySelector('#word-length').value = "";
     });
+    // trying this out
+    let lifeContainer = document.querySelector("#life-count");
+    lifeContainer.textContent = 2;
 
     guessBtn.addEventListener('click', function () {
         let letterGuess = document.querySelector('#guess-box').value;
+        // trying this out
         console.log("The word must contain the letter: " + letterGuess);
         if (removeWithLetter(letterGuess).length > 0) {
             console.log("Nope! That letter definitely isn't in the word.");
+            //trying this out
+            lifeContainer.textContent = lifeContainer.textContent - 1;
+
             allWords = removeWithLetter(letterGuess);
-            // trying out appending letters to a guess graveyard here
+
             let guessGraveyard = document.querySelector("#guess-graveyard");
             let graveGraph = document.createElement("p");
-            graveGraph.value = document.querySelector('#guess-box').value;
-            console.log(graveGraph);
+            graveGraph.classList.add("graveStyling");
+            graveGraph.textContent = document.querySelector('#guess-box').value;
             guessGraveyard.appendChild(graveGraph);
+            document.querySelector('#guess-box').value = "";
+            if (lifeContainer.textContent === 0) {
+                let resultsBox = document.querySelector("#results");
+                let lostMessage = document.createElement("h2");
+                // let finalAnswer = document.createElement("h2");
+                lostMessage.textContent = "Sorry, not this time!";
+                // finalAnswer.textContent =
+                resultsBox.appendChild(lostMessage);
+            }
+
             currentList(allWords);
         } else {
             console.log("Got a letter right");
             currentList(allWords);
         }
-        document.querySelector('#guess-box').value = "";
     });
 });
