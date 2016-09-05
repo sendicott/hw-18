@@ -59,6 +59,7 @@ window.addEventListener('load', function () {
             console.log("Nope! That letter definitely isn't in the word.");
             //trying this out
             lifeContainer.textContent = lifeContainer.textContent - 1;
+            console.log(lifeContainer.textContent);
 
             allWords = removeWithLetter(letterGuess);
 
@@ -69,6 +70,7 @@ window.addEventListener('load', function () {
             guessGraveyard.appendChild(graveGraph);
             document.querySelector('#guess-box').value = "";
             if (lifeContainer.textContent === 0) {
+                console.log("it's working");
                 let resultsBox = document.querySelector("#results");
                 let lostMessage = document.createElement("h2");
                 // let finalAnswer = document.createElement("h2");
