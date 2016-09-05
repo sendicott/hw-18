@@ -47,17 +47,14 @@ window.addEventListener('load', function () {
         currentList(allWords);
         document.querySelector('#word-length').value = "";
     });
-    // trying this out
     let lifeContainer = document.querySelector("#life-count");
     lifeContainer.textContent = 2;
 
     guessBtn.addEventListener('click', function () {
         let letterGuess = document.querySelector('#guess-box').value;
-        // trying this out
         console.log("The word must contain the letter: " + letterGuess);
         if (removeWithLetter(letterGuess).length > 0) {
             console.log("Nope! That letter definitely isn't in the word.");
-            //trying this out
             lifeContainer.textContent = lifeContainer.textContent - 1;
             console.log(lifeContainer.textContent);
 
@@ -69,14 +66,14 @@ window.addEventListener('load', function () {
             graveGraph.textContent = document.querySelector('#guess-box').value;
             guessGraveyard.appendChild(graveGraph);
             document.querySelector('#guess-box').value = "";
-            if (lifeContainer.textContent === 0) {
-                console.log("it's working");
+            if (lifeContainer.textContent === "0") {
                 let resultsBox = document.querySelector("#results");
                 let lostMessage = document.createElement("h2");
-                // let finalAnswer = document.createElement("h2");
                 lostMessage.textContent = "Sorry, not this time!";
-                // finalAnswer.textContent =
                 resultsBox.appendChild(lostMessage);
+                let finalAnswer = document.createElement("h2");
+                finalAnswer.textContent = "The answer was: " + allWords[0];
+                resultsBox.appendChild(finalAnswer);
             }
 
             currentList(allWords);
@@ -86,3 +83,5 @@ window.addEventListener('load', function () {
         }
     });
 });
+
+// when a letter is guessed, if all of the remaining words have that letter, pick a random word from the list, reveal the letter(s)in the appropriate blanks, and strike everything from the wordList that doesn't have that same letter in the same position

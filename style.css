@@ -1,3 +1,8 @@
+body {
+    background-color: #d3d3d3;
+    color: #393939;
+}
+
 h1 {
     display: flex;
     justify-content: center;
@@ -8,7 +13,7 @@ h1 {
     display: inline-flex;
     justify-content: space-around;
     border: 1px solid black;
-    background-color: lightgray;
+    background-color: whitesmoke;
     text-align: center;
     font-size: 28px;
     font-weight: 400;
@@ -37,4 +42,29 @@ h1 {
 
 #results h2 {
     font-size: 45px;
+}
+
+input {
+    width: 100px;
+    height: 50px;
+    font-size: 16px;
+    margin: 5px;
+}
+
+button {
+    background-color: #67aded;
+    border: 1px solid #393939;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    width: 100px;
+    height: 50px;
+    margin: 0 5px;
+}
+
+button:hover {
+    background-color: #ff9d2a;
+    color: #393939;
+    border: 1px solid #67aded;
+    cursor: pointer;
 }
