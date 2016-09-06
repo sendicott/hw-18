@@ -16,9 +16,14 @@ window.addEventListener('load', function () {
 
     let lengthBtn = document.querySelector('#length-setter');
     let guessBtn = document.querySelector('#guess-click');
+    let lifeContainer = document.querySelector("#life-count");
+    lifeContainer.textContent = 9;
+    let rightGuessCount = 0;
+    let targetLength = null;
 
     lengthBtn.addEventListener('click', function () {
-        let targetLength = parseInt(document.querySelector('#word-length').value);
+        targetLength = parseInt(document.querySelector('#word-length').value);
+
         allWords = allWords.filter(function (word) {
             return (word.length === targetLength);
         });
@@ -32,8 +37,6 @@ window.addEventListener('load', function () {
         currentList(allWords);
         document.querySelector('#word-length').value = "";
     });
-    let lifeContainer = document.querySelector("#life-count");
-    lifeContainer.textContent = 22;
 
     guessBtn.addEventListener('click', function () {
         let letterGuess = document.querySelector('#guess-box').value;
@@ -58,19 +61,30 @@ window.addEventListener('load', function () {
             }
         } else {
             console.log("Got a letter right");
-            let letterLocale = allWords[0].split('').indexOf(letterGuess);
-            console.log("letterGuess: " + letterGuess);
-            console.log("letterLocale: " + letterLocale);
+            // I need to keep track of when there is more than one of the correct letter
+            // build an array that receives the index of 
 
-            allWords.filter(function(word) {
+            let letterLocale = allWords[0].split('').indexOf(letterGuess);
+            
+            let blockToFill = document.querySelector("#letterBox" + letterLocale);
+            blockToFill.textContent = letterGuess;
+
+            allWords = allWords.filter(function(word) {
                 return (word.split('').indexOf(letterGuess) === letterLocale);
             });
-            // console.log(letterLocale);
             document.querySelector('#guess-box').value = "";
+
+            rightGuessCount = rightGuessCount + 1;
+            console.log(rightGuessCount);
+            if (rightGuessCount === targetLength) {
+                console.log("you won!");
+                let resultsBox = document.querySelector("#results");
+                let wonMessage = document.createElement("h2");
+                wonMessage.textContent = "Well, this wasn't supposed to happen. You win.";
+                resultsBox.appendChild(wonMessage);
+            }
+            
         }
         currentList(allWords);
     });
 });
-
-// when a letter is guessed, if all of the remaining words have that letter, pick a random word from the list, reveal the letter(s)in the appropriate blanks, and strike everything from the wordList that doesn't have that same letter in the same position
-

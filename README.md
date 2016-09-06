@@ -13,7 +13,6 @@ necessity:
                 i. attach a shared class and a unique id for each
 5.  Create an input field for guessing individual letters
         a. when a letter is guessed, if there is a word in the wordList that does not have that letter, remove all words with the letter and count the guess as wrong
-        
         b. when a letter is guessed, if all of the remaining words have that letter, pick a random word from the list, reveal the letter(s)in the appropriate blanks, and strike everything from the wordList that doesn't have that same letter in the same position
 6.  Create a 'guess' button to be an event listener for user letter guesses
 7.  Create a section that keeps track of remaining guesses/lives
